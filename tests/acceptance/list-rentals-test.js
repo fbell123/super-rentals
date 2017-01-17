@@ -1,7 +1,7 @@
 import { test } from 'qunit';
 import moduleForAcceptance from 'super-rentals/tests/helpers/module-for-acceptance';
 
-moduleForAcceptance('Acceptance | list rentals');
+moduleForAcceptance('Acceptance | list-rentals');
 
 test('should redirect to rentals route', function (assert) {
   visit('/');
@@ -25,7 +25,7 @@ test('should link to information about the company.', function (assert) {
   });
 });
 
-test('should link to contact information.', function (assert) {
+test('should link to contact information', function (assert) {
   visit('/');
   click('a:contains("Contact")');
   andThen(function() {
@@ -44,7 +44,7 @@ test('should filter the list of rentals by city.', function (assert) {
 });
 
 test('should show details for a specific rental', function (assert) {
-  visit('/');
+  visit('/rentals');
   click('a:contains("Grand Old Mansion")');
   andThen(function() {
     assert.equal(currentURL(), '/rentals/grand-old-mansion', 'should navigate to show route');
