@@ -1,7 +1,18 @@
 import { test } from 'qunit';
 import moduleForAcceptance from 'super-rentals/tests/helpers/module-for-acceptance';
 
-moduleForAcceptance('Acceptance | list-rentals');
+let StubsMapsService = Ember.Service.extend({
+  getMapElement() {
+    return document.createElement('div');
+  }
+});
+
+moduleForAcceptance('Acceptance | list-rentals', {
+  beforeEach() {
+    this.application.register('service:stubMaps', StubsMapsService);
+    this.application.inject('component:location-map', 'maps', 'service:stubMaps');
+  }
+});
 
 test('should redirect to rentals route', function (assert) {
   visit('/');
